@@ -13,7 +13,7 @@ class RegisterController extends Controller
    
     // Affiche le formulaire d'inscription
     public function showRegisterForm() {
-        return view('auth.register');
+        return view('register');
     }
 
     // Vérification des champs 
