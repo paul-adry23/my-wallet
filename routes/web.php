@@ -24,10 +24,12 @@ Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEm
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-//déconnexion 
+//déconnexion
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-//Protège tous mon groupe de routes 
+//Protège tous mon groupe de routes
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+
+    Route::resource('accounts', AccountController::class);
 });
